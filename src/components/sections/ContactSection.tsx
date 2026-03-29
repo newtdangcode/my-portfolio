@@ -24,7 +24,15 @@ export function ContactSection({ profile, socialLinks }: ContactSectionProps) {
     }
     const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
     const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    
+    const mailtoAnchor = document.createElement("a");
+    mailtoAnchor.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    mailtoAnchor.target = "_blank";
+    
+    // Fallback block for rigid browsers (like Safari)
+    document.body.appendChild(mailtoAnchor);
+    mailtoAnchor.click();
+    document.body.removeChild(mailtoAnchor);
     
     setFormData({ name: "", email: "", message: "" });
   };
