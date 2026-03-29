@@ -1,6 +1,7 @@
 "use client";
 
 import { Profile } from "@/types";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 interface ContactSectionProps {
@@ -13,6 +14,21 @@ interface ContactSectionProps {
 }
 
 export function ContactSection({ profile, socialLinks }: ContactSectionProps) {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) {
+      alert("Please fill in all fields.");
+      return;
+    }
+    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    
+    setFormData({ name: "", email: "", message: "" });
+  };
+
   return (
     <section className="py-24 px-6 relative z-10" id="contact">
       <div className="max-w-5xl mx-auto">
@@ -59,6 +75,7 @@ export function ContactSection({ profile, socialLinks }: ContactSectionProps) {
             </motion.div>
             
             <motion.form 
+              onSubmit={handleSubmit}
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -71,6 +88,8 @@ export function ContactSection({ profile, socialLinks }: ContactSectionProps) {
                   className="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder-gray-500/50" 
                   placeholder="Your full name" 
                   type="text"
+                  value={formData.name}
+                  onChange={e => setFormData({ ...formData, name: e.target.value })}
                 />
               </div>
               <div className="space-y-2">
@@ -79,6 +98,8 @@ export function ContactSection({ profile, socialLinks }: ContactSectionProps) {
                   className="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder-gray-500/50" 
                   placeholder="hello@company.com" 
                   type="email"
+                  value={formData.email}
+                  onChange={e => setFormData({ ...formData, email: e.target.value })}
                 />
               </div>
               <div className="space-y-2">
@@ -87,12 +108,14 @@ export function ContactSection({ profile, socialLinks }: ContactSectionProps) {
                   className="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all resize-none placeholder-gray-500/50" 
                   placeholder="How can I help you?" 
                   rows={4}
+                  value={formData.message}
+                  onChange={e => setFormData({ ...formData, message: e.target.value })}
                 ></textarea>
               </div>
               <motion.button 
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.95 }}
-                type="button"
+                type="submit"
                 className="w-full py-4 bg-gradient-to-r from-primary-container to-secondary text-on-primary-container font-headline font-bold rounded-2xl shadow-xl shadow-primary-container/20"
               >
                 Send Message

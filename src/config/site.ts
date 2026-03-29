@@ -3,7 +3,7 @@ export const siteConfig = {
   title: "Tran Ngoc Tan - Software Engineer",
   description: "A motivated Software Engineer with strong programming skills and hands-on experience in modern development tools, specializing in scalable architectures and information security.",
   url: "https://newttran.space",
-  ogImage: "https://newttran.space/og.jpg",
+  ogImage: "https://newttran.space/seo.png",
   author: "Tran Ngoc Tan",
   links: {
     twitter: "",
