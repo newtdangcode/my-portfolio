@@ -22,10 +22,10 @@ export default function Home() {
         </a>
         <div className="hidden md:flex gap-6 lg:gap-8 items-center">
           <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#about">About</a>
+          <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#skills">Skills</a>
           <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#education">Education</a>
           <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#experience">Experience</a>
           <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#projects">Projects</a>
-          <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#skills">Skills</a>
           <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#contact">Contact</a>
         </div>
         <div className="flex items-center gap-4">
