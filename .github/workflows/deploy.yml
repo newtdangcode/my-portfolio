@@ -1,0 +1,69 @@
+name: Deploy Portfolio to Remote Server
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+env:
+  # Using the same naming strategy requested
+  IMAGE_NAME: portfolio
+  TAR_NAME: portfolio.tar
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image for Next.js Export
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          load: true # Ensure the compiled docker image is available in workflow runner
+          tags: ${{ env.IMAGE_NAME }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Save Docker image stream into Tarball
+        run: docker save ${{ env.IMAGE_NAME }}:latest -o ${{ env.TAR_NAME }}
+
+      - name: Copy image tarball to Target Server via SCP
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          source: "${{ env.TAR_NAME }}"
+          target: "/tmp"
+
+      - name: SSH into Target Server & Load, Run Docker Container
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            # 1. Nạp (load) hệ thống container Nginx bằng tệp nén đã đẩy lên
+            docker load -i /tmp/${{ env.TAR_NAME }}
+
+            # 2. Xóa các container portfolio cũ (nếu có để không bị kẹt port)
+            docker stop portfolio || true
+            docker rm portfolio || true
+
+            # 3. Chạy container thế hệ mới nhất
+            # Port nội bộ nginx là 80 (đã expose). Chạy public port 8000:80 hoặc bạn có thể chỉnh sau.
+            docker run -d \
+              --name portfolio \
+              -p 8000:80 \
+              --restart unless-stopped \
+              ${{ env.IMAGE_NAME }}:latest
+
+            # 4. Dọn dẹp tài nguyên để không tiêu hao dung lượng trống của server
+            rm /tmp/${{ env.TAR_NAME }}
+            docker image prune -a -f

@@ -1,65 +1,72 @@
-import Image from "next/image";
+import { HeroSection } from "@/components/sections/HeroSection";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { EducationSection } from "@/components/sections/EducationSection";
+import { ExperienceSection } from "@/components/sections/ExperienceSection";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
+import { SkillsSection } from "@/components/sections/SkillsSection";
+import { ContactSection } from "@/components/sections/ContactSection";
+
+import { profileData } from "@/data/profile";
+import { educationData } from "@/data/education";
+import { experienceData } from "@/data/experience";
+import { projectsData } from "@/data/projects";
+import { skillsData } from "@/data/skills";
+import { siteConfig } from "@/config/site";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      <nav className="fixed top-0 w-[calc(100%-2rem)] md:w-full z-50 bg-slate-900/60 backdrop-blur-xl dark:bg-[#0a1324]/60 shadow-[0_8px_32px_0_rgba(0,212,255,0.1)] flex justify-between items-center px-6 md:px-8 py-4 max-w-7xl mx-auto left-4 right-4 md:left-0 md:right-0 mt-4 rounded-3xl md:rounded-full border border-outline-variant/15">
+        <div className="text-2xl font-black bg-gradient-to-r from-[#00d4ff] to-[#ddb7ff] bg-clip-text text-transparent font-headline">NT</div>
+        <div className="hidden md:flex gap-6 lg:gap-8 items-center">
+          <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#education">Education</a>
+          <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#experience">Experience</a>
+          <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#projects">Projects</a>
+          <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#skills">Skills</a>
+          <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#contact">Contact</a>
+        </div>
+        <div className="flex items-center gap-4">
+          <button className="p-2 hover:scale-105 hover:shadow-[0_0_15px_rgba(0,212,255,0.5)] transition-all duration-300 text-[#00d4ff]">
+            <span className="material-symbols-outlined">terminal</span>
+          </button>
+          <a href="/CV-Software-Engineer.pdf" download="TranNgocTan_SoftwareEngineer_CV.pdf" className="bg-gradient-to-r from-primary-container to-secondary px-6 py-2 rounded-full text-on-primary-container font-headline font-bold text-sm hover:scale-105 transition-all shadow-xl shadow-cyan-500/10">Resume</a>
+        </div>
+      </nav>
+
+      <main className="relative">
+        {/* Ambient Background Glows */}
+        <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-container/10 blur-[120px] rounded-full z-0 pointer-events-none"></div>
+        <div className="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/10 blur-[120px] rounded-full z-0 pointer-events-none"></div>
+
+        <HeroSection profile={profileData} />
+        <AboutSection profile={profileData} />
+        <SkillsSection 
+          skills={skillsData} 
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        <EducationSection education={educationData} />
+        <ExperienceSection experience={experienceData} />
+        <ProjectsSection 
+          projects={projectsData} 
+        />
+        <ContactSection 
+          profile={profileData} 
+          socialLinks={siteConfig.links} 
+        />
       </main>
-    </div>
+
+      <footer className="w-full relative z-10 border-t border-[#3c494e]/15 bg-gradient-to-t from-[#131b2d] to-[#0a1324] flex flex-col md:flex-row justify-between items-center px-12 py-8 gap-4">
+        <div className="font-label text-xs uppercase tracking-widest text-slate-500">
+          © {new Date().getFullYear()} {siteConfig.author}. Built with Neon Precision.
+        </div>
+        <div className="flex gap-8">
+          <a className="font-label text-xs uppercase tracking-widest text-slate-500 hover:text-[#ddb7ff] hover:-translate-y-[2px] transition-all duration-300" href={`mailto:${siteConfig.contact.email}`}>Email</a>
+          <a className="font-label text-xs uppercase tracking-widest text-slate-500 hover:text-[#ddb7ff] hover:-translate-y-[2px] transition-all duration-300" href={siteConfig.links.linkedin}>LinkedIn</a>
+          <a className="font-label text-xs uppercase tracking-widest text-slate-500 hover:text-[#ddb7ff] hover:-translate-y-[2px] transition-all duration-300" href={siteConfig.links.github}>GitHub</a>
+          {siteConfig.links.twitter && (
+            <a className="font-label text-xs uppercase tracking-widest text-slate-500 hover:text-[#ddb7ff] hover:-translate-y-[2px] transition-all duration-300" href={siteConfig.links.twitter}>Twitter</a>
+          )}
+        </div>
+      </footer>
+    </>
   );
 }

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1324" />
+      <stop offset="100%" stop-color="#131b2d" />
+    </linearGradient>
+
+    <!-- Cyan Glow -->
+    <filter id="glowCyan" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Pink Glow -->
+    <filter id="glowPink" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)" />
+
+  <!-- Outer Ring (Technical feel) -->
+  <circle cx="256" cy="256" r="200" fill="none" stroke="#48474d" stroke-width="6" stroke-dasharray="20 40" opacity="0.5" />
+  <circle cx="256" cy="256" r="200" fill="none" stroke="#81ecff" stroke-width="12" stroke-dasharray="200 800" transform="rotate(-45 256 256)" />
+
+  <!-- The Monogram 'NT' -->
+  <g transform="translate(100, 360)">
+    <!-- Letter N -->
+    <text x="30" y="0" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="280" fill="#81ecff" filter="url(#glowCyan)" letter-spacing="-10">N</text>
+    
+    <!-- Letter T -->
+    <text x="170" y="0" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="280" fill="#e966ff" filter="url(#glowPink)" opacity="0.9" style="mix-blend-mode: screen;">T</text>
+  </g>
+</svg>
