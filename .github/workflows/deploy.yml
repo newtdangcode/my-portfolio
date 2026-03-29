@@ -49,21 +49,21 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            # 1. Nạp (load) hệ thống container Nginx bằng tệp nén đã đẩy lên
+            # 1. Load the Nginx container image using the recently uploaded tar file
             docker load -i /tmp/${{ env.TAR_NAME }}
 
-            # 2. Xóa các container portfolio cũ (nếu có để không bị kẹt port)
+            # 2. Remove the old portfolio containers (if any exist, to avoid port conflicts)
             docker stop portfolio || true
             docker rm portfolio || true
 
-            # 3. Chạy container thế hệ mới nhất
-            # Port nội bộ nginx là 80 (đã expose). Chạy public port 8000:80 hoặc bạn có thể chỉnh sau.
+            # 3. Run the latest generation container
+            # Internal Nginx port is 80 (already exposed). By default, bind public port 8000:80.
             docker run -d \
               --name portfolio \
               -p 8000:80 \
               --restart unless-stopped \
               ${{ env.IMAGE_NAME }}:latest
 
-            # 4. Dọn dẹp tài nguyên để không tiêu hao dung lượng trống của server
+            # 4. Cleanup resources to avoid consuming host disk space
             rm /tmp/${{ env.TAR_NAME }}
             docker image prune -a -f

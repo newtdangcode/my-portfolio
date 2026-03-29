@@ -17,8 +17,11 @@ export default function Home() {
   return (
     <>
       <nav className="fixed top-0 w-[calc(100%-2rem)] md:w-full z-50 bg-slate-900/60 backdrop-blur-xl dark:bg-[#0a1324]/60 shadow-[0_8px_32px_0_rgba(0,212,255,0.1)] flex justify-between items-center px-6 md:px-8 py-4 max-w-7xl mx-auto left-4 right-4 md:left-0 md:right-0 mt-4 rounded-3xl md:rounded-full border border-outline-variant/15">
-        <div className="text-2xl font-black bg-gradient-to-r from-[#00d4ff] to-[#ddb7ff] bg-clip-text text-transparent font-headline">NT</div>
+        <a href="#" aria-label="Home" className="flex items-center hover:opacity-80 transition-opacity hover:scale-105 duration-300">
+          <img src="/icon.svg" alt="NT Logo" className="w-9 h-9 md:w-10 md:h-10 rounded-xl shadow-[0_0_15px_rgba(129,236,255,0.4)]" />
+        </a>
         <div className="hidden md:flex gap-6 lg:gap-8 items-center">
+          <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#about">About</a>
           <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#education">Education</a>
           <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#experience">Experience</a>
           <a className="font-headline font-medium text-sm tracking-tight text-slate-300 hover:text-white transition-colors" href="#projects">Projects</a>
