@@ -27,7 +27,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
           <div className="h-1 w-24 bg-primary-container mx-auto rounded-full"></div>
         </motion.div>
         
-        <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 md:before:mx-auto before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-primary/20 before:to-transparent">
+        <div className="space-y-12 relative before:absolute before:inset-y-0 before:left-5 md:before:left-1/2 md:before:-translate-x-1/2 before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-primary/20 before:to-transparent">
           {experience.map((job, idx) => {
             const isEven = idx % 2 === 0;
             const borderColor = isEven ? 'border-primary/50' : 'border-secondary/50';
@@ -37,24 +37,24 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
             const textFixedDim = isEven ? 'text-primary-fixed-dim' : 'text-secondary-fixed-dim';
 
             return (
-              <div key={idx} className="relative flex items-center justify-end md:justify-start md:odd:flex-row-reverse group">
+              <div key={idx} className="relative flex items-center gap-6 md:gap-0 md:justify-start md:odd:flex-row-reverse group">
                 <motion.div 
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={{ once: true, margin: "-20px" }}
                   transition={{ duration: 0.4, delay: idx * 0.2 + 0.3, type: "spring" }}
-                  className={`flex items-center justify-center w-10 h-10 rounded-full border ${borderColor} bg-surface ${textColor} absolute left-0 md:left-1/2 md:-translate-x-1/2 z-10 glass-card`}
+                  className={`flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-full border ${borderColor} bg-surface ${textColor} relative md:absolute md:left-1/2 md:-translate-x-1/2 z-10 glass-card shadow-[0_0_15px_rgba(0,0,0,0.5)]`}
                 >
-                  <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>circle</span>
+                  <div className={`w-2.5 h-2.5 rounded-full ${isEven ? 'bg-primary' : 'bg-secondary'} blur-[1px] shadow-[0_0_10px_currentColor]`}></div>
                 </motion.div>
                 
                 <motion.div 
                   initial={{ opacity: 0, x: isEven ? 50 : -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={{ once: true, margin: "-20px" }}
                   transition={{ duration: 0.6, delay: idx * 0.2 }}
                   onClick={() => job.projects && job.projects.length > 0 ? setSelectedJob(job) : null}
-                  className={`w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 md:p-8 rounded-3xl signature-glow ${hoverBorder} transition-all ${job.projects && job.projects.length > 0 ? 'cursor-pointer hover:scale-[1.02]' : ''}`}
+                  className={`flex-1 md:flex-none md:w-[calc(50%-2.5rem)] glass-card p-6 md:p-8 rounded-3xl signature-glow ${hoverBorder} transition-all ${job.projects && job.projects.length > 0 ? 'cursor-pointer hover:scale-[1.02]' : ''}`}
                 >
                   <div className="flex justify-end gap-2 flex-wrap mb-4 sm:mb-6">
                     <span className={`text-xs font-label ${textFixedDim} border ${badgeBorder} px-3 py-1 rounded-full whitespace-nowrap`}>
