@@ -12,8 +12,8 @@ export function AboutSection({ profile }: AboutSectionProps) {
     <section className="py-24 px-6 relative z-10" id="about">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -47,14 +47,14 @@ export function AboutSection({ profile }: AboutSectionProps) {
             </p>
 
             <div className="grid grid-cols-2 gap-6">
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="p-6 rounded-2xl bg-surface-container-low border-l-4 border-primary shadow-xl"
               >
-                <div className="text-3xl font-bold font-headline mb-1">1+</div>
+                <div className="text-3xl font-bold font-headline mb-1">2+</div>
                 <div className="text-label text-xs uppercase text-on-surface-variant">Years Experience</div>
               </motion.div>
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="p-6 rounded-2xl bg-surface-container-low border-l-4 border-secondary shadow-xl"
               >

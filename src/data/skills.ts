@@ -9,7 +9,6 @@ export const skillsData: SkillCategory[] = [
       { name: "TypeScript", progress: "90%" },
       { name: "Java", progress: "85%" },
       { name: "PHP", progress: "80%" },
-      { name: "Python", progress: "70%" },
     ]
   },
   {
@@ -19,7 +18,6 @@ export const skillsData: SkillCategory[] = [
       { name: "HTML / CSS", progress: "95%" },
       { name: "ReactJS", progress: "90%" },
       { name: "NextJS", progress: "90%" },
-      { name: "TailwindCSS", progress: "90%" },
       { name: "Angular", progress: "80%" },
     ]
   },
@@ -36,13 +34,11 @@ export const skillsData: SkillCategory[] = [
   },
   {
     title: "DevOps & Tools",
-    skills: ["Docker", "Jenkins", "GitHub Actions", "Git", "Linux", "VMware", "Postman", "Bitbucket", "Jira", "Swagger"],
+    skills: ["Docker", "GitHub Actions", "Git", "Linux", "VMware", "Postman", "Bitbucket", "Jira", "Swagger"],
     topSkills: [
       { name: "Git / GitHub", progress: "90%" },
       { name: "Docker", progress: "85%" },
       { name: "GitHub Actions", progress: "85%" },
-      { name: "Linux", progress: "80%" },
-      { name: "Postman", progress: "80%" },
     ]
   }
 ];
