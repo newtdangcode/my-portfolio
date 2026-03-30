@@ -37,7 +37,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
             const textFixedDim = isEven ? 'text-primary-fixed-dim' : 'text-secondary-fixed-dim';
 
             return (
-              <div key={idx} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+              <div key={idx} className="relative flex items-center justify-end md:justify-start md:odd:flex-row-reverse group">
                 <motion.div 
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
