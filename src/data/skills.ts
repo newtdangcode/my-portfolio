@@ -3,17 +3,17 @@ import { SkillCategory } from "../types";
 export const skillsData: SkillCategory[] = [
   {
     title: "Programming Languages",
-    skills: ["JavaScript", "TypeScript", "Java", "PHP", "Python", "C++"],
+    skills: ["C#", "JavaScript", "TypeScript", "Java", "PHP", "Python", "C++"],
     topSkills: [
+      { name: "C#", progress: "90%" },
       { name: "JavaScript", progress: "95%" },
       { name: "TypeScript", progress: "90%" },
       { name: "Java", progress: "85%" },
-      { name: "PHP", progress: "80%" },
     ]
   },
   {
     title: "Frontend & UI",
-    skills: ["ReactJS", "NextJS", "Angular", "VueJS", "TailwindCSS", "HTML", "CSS", "Thymeleaf", "Figma"],
+    skills: ["ReactJS", "NextJS", "Angular", "TailwindCSS", "HTML", "CSS", "Thymeleaf", "Figma"],
     topSkills: [
       { name: "HTML / CSS", progress: "95%" },
       { name: "ReactJS", progress: "90%" },
@@ -23,8 +23,9 @@ export const skillsData: SkillCategory[] = [
   },
   {
     title: "Backend Core",
-    skills: ["NestJS", "ExpressJS", "Spring Boot", "Laravel", "MySQL", "MongoDB", "PostgreSQL", "SQLite"],
+    skills: ["ASP.NET Core", "NestJS", "ExpressJS", "Spring Boot", "Laravel", "MySQL", "SQL Server", "MongoDB", "PostgreSQL", "SQLite"],
     topSkills: [
+      { name: "ASP.NET Core", progress: "90%" },
       { name: "NestJS", progress: "95%" },
       { name: "Laravel", progress: "90%" },
       { name: "MySQL / Postgres", progress: "85%" },
@@ -34,7 +35,7 @@ export const skillsData: SkillCategory[] = [
   },
   {
     title: "DevOps & Tools",
-    skills: ["Docker", "GitHub Actions", "Git", "Linux", "VMware", "Postman", "Bitbucket", "Jira", "Swagger"],
+    skills: ["Docker", "GitHub Actions", "Bitbucket", "Git", "Linux", "VMware", "Postman", "Jira", "Swagger", "Hangfire"],
     topSkills: [
       { name: "Git / GitHub", progress: "90%" },
       { name: "Docker", progress: "85%" },

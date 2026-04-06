@@ -7,13 +7,13 @@ export const experienceData: Experience[] = [
     period: "09/2025 - Present",
     description: "Developing web applications, working with the Singaporean operations team in English (mostly via messaging).",
     responsibilities: "Backend & Full Stack Development",
-    skills: ["Laravel", "VueJS", "NestJS", "MySQL", "NeonDB(PostgresSQL)", "Swagger", "JWT", "Figma", "OpenAI API", "Speechmatics", "Bitbucket", "GitHub Actions", "Docker", "Jenkins"],
+    skills: ["C#", "ASP.NET Core", "Laravel", "NestJS", "MySQL", "NeonDB (PostgreSQL)", "Hangfire", "Swagger", "JWT", "Figma", "OpenAI API", "Speechmatics", "Bitbucket", "GitHub Actions", "Docker"],
     projects: [
       {
         name: "Educational Website",
         description: "A classroom observation application that leverages Generative AI to automate the evaluation of teaching effectiveness. It processes session recordings to generate detailed reports on teacher-student interaction patterns, helping institutions scale their quality assurance efforts.",
-        responsibilities: "Backend Developer (Architecting an AI-driven audio analysis platform, integrating advanced LLMs and media processing tools within a scalable Laravel ecosystem.)",
-        technologies: ["Laravel", "Queue & Jobs", "Cron Job", "Supabase", "MySQL", "OpenAI API", "Speechmatics API"]
+        responsibilities: "Backend Developer (Architecting an AI-driven audio analysis platform, integrating advanced LLMs and media processing tools within a highly scalable .NET ecosystem.)",
+        technologies: ["C#", "ASP.NET Core", "Entity Framework Core", "Hangfire", "Multimedia & Data Processing", "Supabase", "MySQL", "OpenAI API", "Speechmatics API"]
       },
       {
         name: "Management System",

@@ -6,15 +6,22 @@ import {
   SiJavascript, SiTypescript, SiPhp, SiPython, SiCplusplus,
   SiReact, SiNextdotjs, SiAngular, SiVuedotjs, SiTailwindcss, SiHtml5, SiCss, SiFigma,
   SiNestjs, SiExpress, SiSpringboot, SiLaravel, SiMysql, SiMongodb, SiPostgresql, SiSqlite,
-  SiDocker, SiGithubactions, SiGit, SiLinux, SiVmware, SiPostman, SiBitbucket, SiJira, SiSwagger
+  SiDocker, SiGithubactions, SiGit, SiLinux, SiVmware, SiPostman, SiBitbucket, SiJira, SiSwagger,
+  SiDotnet
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
+import { TbBrandCSharp, TbFlame } from "react-icons/tb";
+import { DiMsqlServer } from "react-icons/di";
 
 interface SkillsSectionProps {
   skills: SkillCategory[];
 }
 
 const iconMap: Record<string, any> = {
+  "c#": TbBrandCSharp,
+  "asp.net core": SiDotnet,
+  "sql server": DiMsqlServer,
+  hangfire: TbFlame,
   javascript: SiJavascript,
   typescript: SiTypescript,
   java: FaJava,
