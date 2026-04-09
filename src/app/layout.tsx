@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
@@ -17,6 +17,13 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: '--font-label',
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -65,11 +72,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth overflow-x-hidden">
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
       </head>
-      <body className={`${jakarta.variable} ${inter.variable} ${spaceGrotesk.variable} antialiased`}>
+      <body className={`${jakarta.variable} ${inter.variable} ${spaceGrotesk.variable} antialiased overflow-x-hidden`}>
         <script 
           dangerouslySetInnerHTML={{
             __html: `
